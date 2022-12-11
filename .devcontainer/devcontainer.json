@@ -22,8 +22,20 @@
         "matklad.rust-analyzer",
         "vadimcn.vscode-lldb",
         "bungcip.better-toml",
-        "serayuzgur.crates"
-    ]
+        "serayuzgur.crates",
+        "mutantdino.resourcemonitor",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "codezombiech.gitignore",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "mhutchie.git-graph"
+    ],
+    "mounts": [
+        // ローカルssh-keyのマウント
+        "source=${localEnv:HOME}/.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+    ],
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
     // Uncomment the next line if you want start specific services in your Docker Compose config.
@@ -34,4 +46,7 @@
     // "postCreateCommand": "apt-get update && apt-get install -y curl",
     // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
     // "remoteUser": "vscode"
+    "features": {
+        "git": "latest"
+    }
 }
