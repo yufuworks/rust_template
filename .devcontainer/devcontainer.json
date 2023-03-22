@@ -6,7 +6,7 @@
     // Update the 'dockerComposeFile' list if you have more compose files or use different names.
     // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
     "dockerComposeFile": [
-        "../docker-compose.yml",
+        "../docker-compose.yml"
     ],
     // The 'service' property is the name of the service for the container that VS Code should
     // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
@@ -32,9 +32,9 @@
         "mhutchie.git-graph"
     ],
     "mounts": [
-        // ローカルssh-keyのマウント
+        // ローカルssh-keyのマウント:github接続設定
         "source=${localEnv:HOME}/.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached",
-        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
     ],
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
@@ -44,6 +44,8 @@
     // "shutdownAction": "none",
     // Uncomment the next line to run commands after the container is created - for example installing curl.
     // "postCreateCommand": "apt-get update && apt-get install -y curl",
+    // git-secretをインストールしておかないとコミット作成時にエラーになる。
+    "postCreateCommand": "cargo install cargo-edit cargo-watch && rustup component add rls rust-analysis rust-src rustfmt clippy && git clone https://github.com/awslabs/git-secrets && cd git-secrets && sudo make install && rm -rf ../git-secrets/ && rustc --version",
     // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
     // "remoteUser": "vscode"
     "features": {
